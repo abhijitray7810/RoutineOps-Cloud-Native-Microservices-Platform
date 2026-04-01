@@ -1,15 +1,11 @@
+# backend.tf - Bootstrap mode (no remote state yet)
+
 terraform {
-  backend "s3" {
-    bucket         = "routineops-terraform-state-2025"
-    key            = "infrastructure/terraform.tfstate"
-    region         = "ap-south-1"
-    encrypt        = true
-    dynamodb_table = "routineops-terraform-locks"
-  }
+  required_version = ">= 1.5.0"
+  # No backend block - uses local state temporarily
 }
 
-# Create S3 bucket and DynamoDB table for state management
-# Run this locally first to bootstrap, then migrate state
+# S3 bucket for state
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "routineops-terraform-state-2025"
 
@@ -39,6 +35,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state" 
   }
 }
 
+# DynamoDB for locking (legacy method - still works)
 resource "aws_dynamodb_table" "terraform_locks" {
   name         = "routineops-terraform-locks"
   billing_mode = "PAY_PER_REQUEST"

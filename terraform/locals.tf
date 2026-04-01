@@ -6,7 +6,7 @@ locals {
     Project     = local.project_name
     Environment = local.environment
     ManagedBy   = "Terraform"
-    CreatedAt   = timestamp()
+    # Removed timestamp() - it causes inconsistent plans in Terraform
   }
 
   naming_prefix = "${local.project_name}-${local.environment}"
@@ -18,5 +18,5 @@ locals {
   domain_name = "routineops.local"  # Change to your actual domain
   
   # GitHub repository for CI/CD
-  github_repo = "your-org/snu-routine-generator-02"
+  github_repo = "https://github.com/abhijitray7810/routineops-platform/tree/main"
 }

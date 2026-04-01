@@ -14,7 +14,7 @@ This guide provides comprehensive deployment instructions for the SNU Routine Ge
 ```bash
 # Clone and navigate to project
 git clone <repository-url>
-cd snu-routine-generator
+cd routine-generator
 
 # Start all services
 docker-compose up -d
