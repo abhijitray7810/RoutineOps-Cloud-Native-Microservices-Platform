@@ -436,7 +436,7 @@ app.use(cors({ origin: process.env.CORS_ORIGIN }));
 ---
 
 ### Problem 8 — GitHub Actions deploy failed due to stale kubeconfig
-![image]()
+![image](https://github.com/abhijitray7810/RoutineOps-Cloud-Native-Microservices-Platform/blob/cfa0623e91dd6c802d7d4f869a23019529485a39/assets/Screenshot%202026-04-01%20172019.png)
 **Symptom:** CI pipeline threw `error: the server doesn't have a resource type "deployment"` even though the cluster existed.
 
 **Root Cause:** The `KUBECONFIG` used by the GitHub Actions runner was either missing or pointing to the wrong cluster context after the EKS cluster was recreated with a new ARN.
