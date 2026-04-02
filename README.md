@@ -1,7 +1,6 @@
-# RoutineOps Platform
+# RoutineOps-Cloud-native-Microservices-Platform
 
-> **DevOps-driven full-stack routine generator** with a Dockerized Express backend, MongoDB, Next.js frontend, Kubernetes orchestration, Terraform-provisioned AWS infrastructure, and a CI/CD-ready GitHub Actions pipeline.
-
+> **DevOps-driven full-stack routine generator** End-to-end cloud-native DevOps project: AWS infrastructure with Terraform, containerized microservices with Docker, Kubernetes deployment, automated CI/CD pipelines, and Prometheus-Grafana monitoring.
 ---
 
 ## Table of Contents
@@ -31,7 +30,7 @@
 
 ## Project Overview
 
-**RoutineOps Platform** is a department-level routine (class schedule / timetable) generator built for university use. It lets department admins create, manage, and export course routines, while the backend enforces business rules (clash detection, room availability, etc.) and persists data in MongoDB.
+**RoutineOps-Cloud-native-Microservices-Platform** is a department-level routine (class schedule / timetable) generator built for university use. It lets department admins create, manage, and export course routines, while the backend enforces business rules (clash detection, room availability, etc.) and persists data in MongoDB.
 
 The project was designed with a **DevOps-first mindset** — every layer (local dev, staging, production) is infrastructure-as-code, containerized, and continuously deployed.
 
@@ -57,41 +56,7 @@ The project was designed with a **DevOps-first mindset** — every layer (local 
 ## Architecture & Workflow Diagram
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        GitHub Repository                        │
-│   Push → .github/workflows → GitHub Actions CI/CD Pipeline     │
-└──────────────────────────┬──────────────────────────────────────┘
-                           │  Build & Push Docker Images
-                           ▼
-                    ┌─────────────┐
-                    │  AWS ECR    │  (Elastic Container Registry)
-                    └──────┬──────┘
-                           │  Pull Images
-                           ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                        AWS EKS Cluster                           │
-│                                                                  │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────────┐   │
-│  │  Frontend    │    │   Backend    │    │    MongoDB       │   │
-│  │  (Next.js)   │───▶│  (Express)   │───▶│  (StatefulSet)   │   │
-│  │  Pod(s)      │    │  Pod(s)      │    │  Pod             │   │
-│  └──────┬───────┘    └──────────────┘    └──────────────────┘   │
-│         │                                                        │
-│  ┌──────▼───────┐                                                │
-│  │   Ingress    │  (NGINX Ingress Controller)                    │
-│  │  Controller  │                                                │
-│  └──────┬───────┘                                                │
-│         │  HPA autoscales pods based on CPU/memory              │
-└─────────┼────────────────────────────────────────────────────────┘
-          │
-          ▼
-    Public Internet
-    (User's Browser)
-
-─────────── Local Dev ──────────────
-Docker Compose:
-  mongo ──▶ backend ──▶ frontend
-  (internal network; only frontend port exposed)
+![image]()
 ```
 
 **Data Flow (Request Lifecycle):**
