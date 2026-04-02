@@ -289,7 +289,7 @@ The GitHub Actions IAM user credentials (created by `cicd.tf`) are stored as Git
 ---
 
 ## Problems Faced & How I Solved Them
-![image]()
+![image](https://github.com/abhijitray7810/RoutineOps-Cloud-Native-Microservices-Platform/blob/8a89292dd73b2e9d09fd5d11ec854fcbe62b370d/assets/Screenshot%202026-04-01%20171415.png)
 ### Problem 1 — Backend crashed before MongoDB was ready
 
 **Symptom:** On `docker compose up`, the backend container exited with `MongoNetworkError: connect ECONNREFUSED` because it started before MongoDB finished initializing.
