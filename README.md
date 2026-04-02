@@ -61,18 +61,6 @@ The project was designed with a **DevOps-first mindset** — every layer (local 
 
 **Data Flow (Request Lifecycle):**
 
-```
-Browser → Ingress → Frontend (Next.js SSR/CSR)
-                        │
-                        │ API call (NEXT_PUBLIC_API_URL)
-                        ▼
-                   Backend (Express REST API)
-                        │
-                        │ Mongoose ODM
-                        ▼
-                   MongoDB (snu_routine DB)
-```
-
 ---
 
 ## Repository Structure
@@ -133,7 +121,7 @@ routineops-platform/
 ---
 
 ## Step-by-Step Implementation
-
+![image]()
 ### Step 1 — Project Scaffolding
 
 Created the monorepo structure with two separate services (`backend/`, `frontend/`) at the root so Docker Compose and Kubernetes can treat them as independent build contexts.
@@ -145,7 +133,7 @@ Created the monorepo structure with two separate services (`backend/`, `frontend
 ---
 
 ### Step 2 — Backend (Express + MongoDB)
-
+![image]()
 **Stack:** Express 4, Mongoose 8, Morgan (HTTP logger), dotenv, CORS.
 
 Key decisions:
@@ -162,7 +150,7 @@ app.get('/health', (req, res) => res.json({ status: 'ok' }));
 ---
 
 ### Step 3 — Frontend (Next.js + Tailwind)
-
+![image]()
 **Stack:** Next.js 16 (App Router), React 18, TypeScript 5.4, Tailwind CSS 3, Zustand 4 (global state), TanStack Query 5 (server state / caching), Framer Motion (animations), jsPDF + html2canvas (PDF export).
 
 Key decisions:
@@ -301,7 +289,7 @@ The GitHub Actions IAM user credentials (created by `cicd.tf`) are stored as Git
 ---
 
 ## Problems Faced & How I Solved Them
-
+![image]()
 ### Problem 1 — Backend crashed before MongoDB was ready
 
 **Symptom:** On `docker compose up`, the backend container exited with `MongoNetworkError: connect ECONNREFUSED` because it started before MongoDB finished initializing.
@@ -319,7 +307,7 @@ depends_on:
 ---
 
 ### Problem 2 — `NEXT_PUBLIC_API_URL` was undefined in production
-
+![image]()
 **Symptom:** All API calls from the browser hit `undefined/api/...` and failed with a network error.
 
 **Root Cause:** Next.js bakes `NEXT_PUBLIC_*` variables into the client bundle at **build time**, not runtime. Setting the env var in the Compose `environment` block only affects server-side runtime — the already-built JS bundle doesn't pick it up.
@@ -361,7 +349,7 @@ resource "aws_iam_role_policy_attachment" "ecr_read" {
 ---
 
 ### Problem 4 — MongoDB data lost on pod restart
-
+![image]()
 **Symptom:** Every time the MongoDB pod restarted, all data was gone.
 
 **Root Cause:** The MongoDB Deployment was using an `emptyDir` volume, which is ephemeral and destroyed when the pod restarts.
@@ -383,7 +371,7 @@ volumeClaimTemplates:
 ---
 
 ### Problem 5 — HPA not scaling (unknown CPU metrics)
-
+![image]()
 **Symptom:** `kubectl get hpa` showed `<unknown>/70%` for CPU and never triggered scaling.
 
 **Root Cause:** HPA requires the Kubernetes Metrics Server to be running, and pods must have `resources.requests.cpu` defined. Neither was configured.
@@ -405,7 +393,7 @@ resources:
 ---
 
 ### Problem 6 — Terraform state conflicts in team environment
-
+![image]()
 **Symptom:** Two contributors running `terraform apply` simultaneously caused state corruption and duplicate resources.
 
 **Root Cause:** Local state file was being used — no locking mechanism.
@@ -427,7 +415,7 @@ terraform {
 ---
 
 ### Problem 7 — CORS errors between frontend and backend in Docker
-
+![image]()
 **Symptom:** Browser console showed `Access to XMLHttpRequest blocked by CORS policy` when the frontend made API calls.
 
 **Root Cause:** `CORS_ORIGIN` was hardcoded to `localhost:3000` in the backend — but in Docker, the frontend's actual origin as seen by the browser was `http://localhost:3000` (host machine), not the container name.
@@ -448,7 +436,7 @@ app.use(cors({ origin: process.env.CORS_ORIGIN }));
 ---
 
 ### Problem 8 — GitHub Actions deploy failed due to stale kubeconfig
-
+![image]()
 **Symptom:** CI pipeline threw `error: the server doesn't have a resource type "deployment"` even though the cluster existed.
 
 **Root Cause:** The `KUBECONFIG` used by the GitHub Actions runner was either missing or pointing to the wrong cluster context after the EKS cluster was recreated with a new ARN.
@@ -466,7 +454,7 @@ app.use(cors({ origin: process.env.CORS_ORIGIN }));
 ---
 
 ## Environment Variables
-
+![image]()
 ### Backend
 
 | Variable | Required | Default | Description |
