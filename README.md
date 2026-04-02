@@ -393,7 +393,7 @@ resources:
 ---
 
 ### Problem 6 — Terraform state conflicts in team environment
-![image]()
+![image](https://github.com/abhijitray7810/RoutineOps-Cloud-Native-Microservices-Platform/blob/75937b6f04d51ade7b01680cf1bafc2e35f5541b/assets/Screenshot%202026-04-02%20162010.png)
 **Symptom:** Two contributors running `terraform apply` simultaneously caused state corruption and duplicate resources.
 
 **Root Cause:** Local state file was being used — no locking mechanism.
