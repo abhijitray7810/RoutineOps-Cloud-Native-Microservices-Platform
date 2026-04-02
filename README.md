@@ -271,7 +271,7 @@ Apply order: `vpc → eks → ecr → iam → ingress → monitoring → cicd`
 The GitHub Actions IAM user credentials (created by `cicd.tf`) are stored as GitHub Secrets (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`).
 
 ---
-
+![image](https://github.com/abhijitray7810/RoutineOps-Cloud-Native-Microservices-Platform/blob/4b33f12830aa594476349df0b6828d83d08a09f2/assets/Screenshot%202026-04-01%20172220.png)
 ### Step 9 — Monitoring & HPA
 
 - **HPA (`hpa.yaml`):** Scales backend pods from 1 to 5 replicas when CPU > 70%.
