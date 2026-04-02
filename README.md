@@ -415,7 +415,7 @@ terraform {
 ---
 
 ### Problem 7 — CORS errors between frontend and backend in Docker
-![image]()
+![image](https://github.com/abhijitray7810/RoutineOps-Cloud-Native-Microservices-Platform/blob/8cbc579ec90551cc1500aae047a1cb3462fef4c4/assets/Screenshot%202026-04-01%20171724.png)
 **Symptom:** Browser console showed `Access to XMLHttpRequest blocked by CORS policy` when the frontend made API calls.
 
 **Root Cause:** `CORS_ORIGIN` was hardcoded to `localhost:3000` in the backend — but in Docker, the frontend's actual origin as seen by the browser was `http://localhost:3000` (host machine), not the container name.
