@@ -121,7 +121,7 @@ routineops-platform/
 ---
 
 ## Step-by-Step Implementation
-![image]()
+![image](https://github.com/abhijitray7810/RoutineOps-Cloud-Native-Microservices-Platform/blob/5e3180672c9039aa573bd48a432bdd49670ad961/assets/Screenshot%202026-04-02%20161345.png)
 ### Step 1 — Project Scaffolding
 
 Created the monorepo structure with two separate services (`backend/`, `frontend/`) at the root so Docker Compose and Kubernetes can treat them as independent build contexts.
