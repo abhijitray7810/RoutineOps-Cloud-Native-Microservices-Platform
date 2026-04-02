@@ -55,9 +55,9 @@ The project was designed with a **DevOps-first mindset** — every layer (local 
 
 ## Architecture & Workflow Diagram
 
-```
-![image]()
-```
+
+![image](https://github.com/abhijitray7810/RoutineOps-Cloud-Native-Microservices-Platform/blob/d59719304c7f61e154b5600fdc6b5d94bf2b31e6/assets/Screenshot%202026-04-02%20155523.png)
+
 
 **Data Flow (Request Lifecycle):**
 
