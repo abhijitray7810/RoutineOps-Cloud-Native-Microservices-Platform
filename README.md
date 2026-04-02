@@ -349,7 +349,7 @@ resource "aws_iam_role_policy_attachment" "ecr_read" {
 ---
 
 ### Problem 4 — MongoDB data lost on pod restart
-![image]()
+![image](https://github.com/abhijitray7810/RoutineOps-Cloud-Native-Microservices-Platform/blob/b6505f88bd81b7ca279ca2985bc7b3c840e2b9b0/assets/Screenshot%202026-04-01%20172738.png)
 **Symptom:** Every time the MongoDB pod restarted, all data was gone.
 
 **Root Cause:** The MongoDB Deployment was using an `emptyDir` volume, which is ephemeral and destroyed when the pod restarts.
