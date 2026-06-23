@@ -3,7 +3,7 @@
 > **DevOps-driven full-stack routine generator** End-to-end cloud-native DevOps project: AWS infrastructure with Terraform, containerized microservices with Docker, Kubernetes deployment, automated CI/CD pipelines, and Prometheus-Grafana monitoring.
 ---
 
-## Table of Contents
+## Table of Contents 
 
 1. [Project Overview](#project-overview)
 2. [Tech Stack](#tech-stack)
