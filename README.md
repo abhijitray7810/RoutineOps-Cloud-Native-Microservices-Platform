@@ -310,7 +310,7 @@ depends_on:
 ![image](https://github.com/abhijitray7810/RoutineOps-Cloud-Native-Microservices-Platform/blob/ce0738495fde497d663fdc9d6139c28cd1df3168/assets/Screenshot%202026-04-01%20171937.png)
 **Symptom:** All API calls from the browser hit `undefined/api/...` and failed with a network error.
 
-**Root Cause:** Next.js bakes `NEXT_PUBLIC_*` variables into the client bundle at **build time**, not runtime. Setting the env var in the Compose `environment` block only affects server-side runtime — the already-built JS bundle doesn't pick it up.
+**Root Cause:** Next.js bakes `NEXT_PUBLIC_*` variables into the client bundle at **build time**, not runtime. Setting the env var in the Compose `environment` block only affects server-side runtime — the already-built JS bundle doesn't pick it up. 
 
 **Fix:** Passed `NEXT_PUBLIC_API_URL` as a Docker `--build-arg` so it is available during `next build`:
 
