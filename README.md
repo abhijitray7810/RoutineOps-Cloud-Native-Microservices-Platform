@@ -1,6 +1,6 @@
 # RoutineOps-Cloud-native-Microservices-Platfor
 
-> **DevOps-driven full-stack routine generator** End-to-end cloud-native DevOps project: AWS infrastructure with Terraform, containerized microservices with Docker, Kubernetes deployment, automated CI/CD pipelines, and Prometheus-Grafana monitoring.
+> **DevOps-driven full-stack routine generator** End-to-end cloud-native DevOps project: AWS infrastructure with Terraform, containerized microservices with Docker, Kubernetes deployment, automated CI/CD pipelines, and Prometheus-Grafana monitoring. 
 ---
 
 ## Table of Contents 
